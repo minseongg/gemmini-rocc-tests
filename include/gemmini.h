@@ -56,6 +56,11 @@
 #define k_LOOP_CONV_WS_CONFIG_5 20
 #define k_LOOP_CONV_WS_CONFIG_6 21
 
+// We define these functs from 23 becuase 22 is already reserved for `CLKGATE_EN` in Gemmini.
+#define k_COMPUTE_PRELOADED2 23
+#define k_COMPUTE_ACCUMULATE2 24
+#define k_PRELOAD2 25
+
 #define CONFIG_EX 0
 #define CONFIG_LD 1
 #define CONFIG_ST 2
