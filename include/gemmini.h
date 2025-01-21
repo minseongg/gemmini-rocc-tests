@@ -231,24 +231,45 @@ static acc_scale_t_bits acc_scale_t_to_acc_scale_t_bits(acc_scale_t x) {
 #define gemmini_extended_compute_preloaded(A, BD, A_cols, A_rows, BD_cols, BD_rows) \
   ROCC_INSTRUCTION_RS1_RS2(XCUSTOM_ACC, ((uint64_t)(A_rows) << (ADDR_LEN + 16)) | ((uint64_t)(A_cols) << ADDR_LEN) | (uint64_t)(A), ((uint64_t)(BD_rows) << (ADDR_LEN + 16)) | ((uint64_t)(BD_cols) << ADDR_LEN) | (uint64_t)(BD), k_COMPUTE_PRELOADED)
 
+#define gemmini_extended_compute_preloaded2(A, BD, A_cols, A_rows, BD_cols, BD_rows) \
+  ROCC_INSTRUCTION_RS1_RS2(XCUSTOM_ACC, ((uint64_t)(A_rows) << (ADDR_LEN + 16)) | ((uint64_t)(A_cols) << ADDR_LEN) | (uint64_t)(A), ((uint64_t)(BD_rows) << (ADDR_LEN + 16)) | ((uint64_t)(BD_cols) << ADDR_LEN) | (uint64_t)(BD), k_COMPUTE_PRELOADED2)
+
 #define gemmini_extended_compute_accumulated(A, BD, A_cols, A_rows, BD_cols, BD_rows) \
   ROCC_INSTRUCTION_RS1_RS2(XCUSTOM_ACC, ((uint64_t)(A_rows) << (ADDR_LEN + 16)) | ((uint64_t)(A_cols) << ADDR_LEN) | (uint64_t)(A), ((uint64_t)(BD_rows) << (ADDR_LEN + 16)) | ((uint64_t)(BD_cols) << ADDR_LEN) | (uint64_t)(BD), k_COMPUTE_ACCUMULATE)
+
+#define gemmini_extended_compute_accumulated2(A, BD, A_cols, A_rows, BD_cols, BD_rows) \
+  ROCC_INSTRUCTION_RS1_RS2(XCUSTOM_ACC, ((uint64_t)(A_rows) << (ADDR_LEN + 16)) | ((uint64_t)(A_cols) << ADDR_LEN) | (uint64_t)(A), ((uint64_t)(BD_rows) << (ADDR_LEN + 16)) | ((uint64_t)(BD_cols) << ADDR_LEN) | (uint64_t)(BD), k_COMPUTE_ACCUMULATE2)
 
 #define gemmini_compute_preloaded(A, BD) \
   gemmini_extended_compute_preloaded(A, BD, DIM, DIM, DIM, DIM)
 
+#define gemmini_compute_preloaded2(A, BD) \
+  gemmini_extended_compute_preloaded2(A, BD, DIM, DIM, DIM, DIM)
+
 #define gemmini_compute_accumulated(A, BD) \
   gemmini_extended_compute_accumulated(A, BD, DIM, DIM, DIM, DIM)
+
+#define gemmini_compute_accumulated2(A, BD) \
+  gemmini_extended_compute_accumulated2(A, BD, DIM, DIM, DIM, DIM)
 
 // preload
 #define gemmini_extended_preload(BD, C, BD_cols, BD_rows, C_cols, C_rows) \
   ROCC_INSTRUCTION_RS1_RS2(XCUSTOM_ACC, ((uint64_t)(BD_rows) << (ADDR_LEN + 16)) | ((uint64_t)(BD_cols) << ADDR_LEN) | (uint64_t)(BD), ((uint64_t)(C_rows) << (ADDR_LEN + 16)) | ((uint64_t)(C_cols) << ADDR_LEN) | (uint64_t)(C), k_PRELOAD)
 
+#define gemmini_extended_preload2(BD, C, BD_cols, BD_rows, C_cols, C_rows) \
+  ROCC_INSTRUCTION_RS1_RS2(XCUSTOM_ACC, ((uint64_t)(BD_rows) << (ADDR_LEN + 16)) | ((uint64_t)(BD_cols) << ADDR_LEN) | (uint64_t)(BD), ((uint64_t)(C_rows) << (ADDR_LEN + 16)) | ((uint64_t)(C_cols) << ADDR_LEN) | (uint64_t)(C), k_PRELOAD2)
+
 #define gemmini_preload(BD, C) \
   gemmini_extended_preload(BD, C, DIM, DIM, DIM, DIM)
 
+#define gemmini_preload2(BD, C) \
+  gemmini_extended_preload2(BD, C, DIM, DIM, DIM, DIM)
+
 #define gemmini_preload_zeros(C) \
   gemmini_preload(GARBAGE_ADDR, C)
+
+#define gemmini_preload_zeros2(C) \
+  gemmini_preload2(GARBAGE_ADDR, C)
 
 // config
 #define gemmini_extended3_config_ex(dataflow, sys_act, sys_shift, sys_acc_scale, C_stride, A_stride, A_transpose, B_transpose, set_only_strides) \
