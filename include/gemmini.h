@@ -521,14 +521,11 @@ static void sp_tiled_matmul_os(const elem_t * A, const elem_t * B, const void * 
 
         for (size_t k = 0; k < K; k++) {
 
-          const uint32_t A_sp_addr = A_sp_addr_start + (i*K + k)*DIM;
-          const uint32_t B_sp_addr = B_sp_addr_start + (k*J + j)*DIM;
-
-          uint32_t out_sp_addr = k == K-1 ? C_sp_addr : GARBAGE_ADDR;
-
-          const uint32_t A_sp_addr2 = A_sp_addr_start + (i*K + k)*DIM;
+          const uint32_t A_sp_addr  = A_sp_addr_start + (i*K + k)*DIM;
+          const uint32_t B_sp_addr  = B_sp_addr_start + (k*J + j)*DIM;
           const uint32_t B_sp_addr2 = B_sp_addr_start + (k*J + j+1)*DIM;
 
+          uint32_t out_sp_addr  = k == K-1 ? C_sp_addr : GARBAGE_ADDR;
           uint32_t out_sp_addr2 = k == K-1 ? C_sp_addr2 : GARBAGE_ADDR;
 
           // If we're not using a bias, then we want to overwrite what's in the
@@ -557,9 +554,9 @@ static void sp_tiled_matmul_os(const elem_t * A, const elem_t * B, const void * 
           gemmini_extended_preload2(GARBAGE_ADDR, out_sp_addr2, DIM, DIM, C_cols, C_rows);
 
           if (k == 0) { // First iteration
-            gemmini_extended_compute_preloaded2(A_sp_addr2, B_sp_addr2, A_cols, A_rows, B_cols, B_rows);
+            gemmini_extended_compute_preloaded2(A_sp_addr, B_sp_addr2, A_cols, A_rows, B_cols, B_rows);
           } else { // All other iterations
-            gemmini_extended_compute_accumulated2(A_sp_addr2, B_sp_addr2, A_cols, A_rows, B_cols, B_rows);
+            gemmini_extended_compute_accumulated2(A_sp_addr, B_sp_addr2, A_cols, A_rows, B_cols, B_rows);
           }
         }
       }
