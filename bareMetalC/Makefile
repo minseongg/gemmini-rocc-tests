@@ -37,6 +37,7 @@ tests = \
 	conv_perf \
 	conv_dw_perf \
 	tiled_matmul_os \
+	tiled_matmul_os_extra_mesh \
 	tiled_matmul_ws \
 	tiled_matmul_ws_At \
 	tiled_matmul_ws_Bt \
