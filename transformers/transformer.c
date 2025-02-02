@@ -55,7 +55,8 @@ void attention(int hidden_dim, int expansion_dim, int num_heads, int seq_len,
             false, /*transpose_B=*/ false,
             false, false,
             0,
-            WS);
+            WS,
+            false);
     }
 
     gemmini_fence();
@@ -77,7 +78,8 @@ void attention(int hidden_dim, int expansion_dim, int num_heads, int seq_len,
             false, /*transpose_B=*/ true,
             false, false,
             0,
-            WS);
+            WS,
+            false);
     }
 
     gemmini_fence();
@@ -98,7 +100,8 @@ void attention(int hidden_dim, int expansion_dim, int num_heads, int seq_len,
             false, /*transpose_B=*/ false,
             false, false,
             0,
-            WS);
+            WS,
+            false);
     }
 
     gemmini_fence();
@@ -114,7 +117,8 @@ void attention(int hidden_dim, int expansion_dim, int num_heads, int seq_len,
         false, /*transpose_B=*/ false,
         true, false,
         0,
-        WS);
+        WS,
+        false);
 
     gemmini_fence();
 
@@ -157,7 +161,8 @@ void ffn(int hidden_dim, int expansion_dim, int seq_len,
         false, /*transpose_B=*/ false,
         false, false,
         0,
-        WS);
+        WS,
+        false);
 
     gemmini_fence();
 
@@ -172,7 +177,8 @@ void ffn(int hidden_dim, int expansion_dim, int seq_len,
         false, /*transpose_B=*/ false,
         true, false,
         0,
-        WS);
+        WS,
+        false);
 
     gemmini_fence();
 

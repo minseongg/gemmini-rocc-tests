@@ -142,7 +142,8 @@ int main() {
             false, false,
             false, false,
             0,
-            CPU);
+            CPU,
+            false);
 
     unsigned long end = read_cycles();
     printf("Cycles taken: %u\n", end-start);

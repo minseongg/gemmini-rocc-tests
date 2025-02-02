@@ -74,7 +74,8 @@ int main() {
             A_TRANSPOSE, B_TRANSPOSE,
             false, false,
             0,
-            WS);
+            WS,
+            false);
 
     gemmini_fence();
 

@@ -102,7 +102,8 @@ int main() {
             false, false,
             false, !FULL_BIAS_WIDTH,
             0,
-            CPU);
+            CPU,
+            false);
 
     unsigned long cpu_end = read_cycles();
     printf("Cycles taken: %u\n", cpu_end-cpu_start);
@@ -120,7 +121,8 @@ int main() {
             false, false,
             false, !FULL_BIAS_WIDTH,
             0,
-            WS);
+            WS,
+            false);
 
     unsigned long end = read_cycles();
     printf("Cycles taken: %u\n", end-start);

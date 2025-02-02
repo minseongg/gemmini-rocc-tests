@@ -99,7 +99,8 @@ static void tiled_matmul_nn(size_t dim_I, size_t dim_J, size_t dim_K,
         false, false,
         false, false,
         0,
-        tiled_matmul_type);
+        tiled_matmul_type,
+        false);
 
     if (check) {
         printf("%s: CPU\n", layer_name);
@@ -112,7 +113,8 @@ static void tiled_matmul_nn(size_t dim_I, size_t dim_J, size_t dim_K,
             false, false,
             false, false,
             0,
-            CPU);
+            CPU,
+            false);
 
         if (!MAT_IS_EQUAL(dim_I, dim_J, C, gold)) {
             printf("Layer calculated incorrectly: %s\n", layer_name);
@@ -142,7 +144,8 @@ static void tiled_matmul_nn_auto(size_t dim_I, size_t dim_J, size_t dim_K,
         false, false,
         false, false,
         0,
-        tiled_matmul_type);
+        tiled_matmul_type,
+        false);
 
     if (check) {
         printf("%s: CPU\n", layer_name);
@@ -155,7 +158,8 @@ static void tiled_matmul_nn_auto(size_t dim_I, size_t dim_J, size_t dim_K,
             false, false,
             false, false,
             0,
-            CPU);
+            CPU,
+            false);
 
         if (!MAT_IS_EQUAL(dim_I, dim_J, C, gold)) {
             printf("Layer calculated incorrectly: %s\n", layer_name);
@@ -181,7 +185,8 @@ static void tiled_matmul_nn_stride_auto(size_t dim_I, size_t dim_J, size_t dim_K
         false, false,
         false, false,
         0,
-        tiled_matmul_type);
+        tiled_matmul_type,
+        false);
 }
 static void conv_dw(size_t I, size_t J,
     const size_t batch_size, const size_t channels,

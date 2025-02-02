@@ -156,7 +156,8 @@ int main() {
             false, false,
             false, false,
             0,
-            OS);
+            OS,
+            false);
 
     unsigned long end = read_cycles();
     printf("Cycles taken: %u\n", end-start);

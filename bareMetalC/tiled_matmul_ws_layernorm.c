@@ -117,7 +117,8 @@ int main() {
             false, false,
             false, !FULL_BIAS_WIDTH,
             0,
-            CPU);
+            CPU,
+            false);
 
     unsigned long cpu_end = read_cycles();
     printf("Cycles taken: %u\n", cpu_end-cpu_start);
@@ -137,7 +138,8 @@ int main() {
             false, false,
             false, !FULL_BIAS_WIDTH,
             0,
-            WS);
+            WS,
+            false);
             */
 
     tiled_matmul_auto(MAT_DIM_I, MAT_DIM_J, MAT_DIM_K,
@@ -149,7 +151,8 @@ int main() {
             false, false,
             true, !FULL_BIAS_WIDTH,
             0,
-            WS);
+            WS,
+            false);
 
     gemmini_fence();
 

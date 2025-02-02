@@ -199,7 +199,8 @@ int main() {
                         a_transpose, b_transpose,
                         false, false,
                         0,
-                        option);
+                        option,
+                        false);
 
                 if (!full_is_equal(full_C, gold)) {
                   printf("\nINCORRECT!\n");

@@ -129,7 +129,8 @@ int main() {
             false, false,
             true, !FULL_BIAS_WIDTH,
             0,
-            WS);
+            WS,
+            false);
 
     unsigned long end = read_cycles();
     printf("Cycles taken: %u\n", end-start);
